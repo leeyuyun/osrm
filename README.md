@@ -4,6 +4,11 @@ Simple static UI for calling OSRM Route API.
 
 Current version: `v0.2.0`
 
+## Version History
+
+- `v0.2.0` (2026-03-03): Added aviation arc rendering and segment details; shipping upgraded to navigable approximation; improved antimeridian rendering.
+- `v0.1.0` (2026-03-03): Initial release with OSRM routing UI, address geocoding, and great-circle aviation/shipping modes.
+
 ## Quick Start
 
 1. Open terminal in this folder.
