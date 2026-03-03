@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OSRM Cloud API UI</title>
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
   <main class="app">
@@ -25,7 +26,7 @@
             <option value="walking">walking</option>
             <option value="cycling">cycling</option>
             <option value="aviation-gc">aviation (great-circle)</option>
-            <option value="shipping-gc">shipping (great-circle)</option>
+            <option value="shipping-gc">shipping (navigable approx)</option>
           </select>
         </label>
       </div>
@@ -128,8 +129,15 @@
         </article>
       </div>
 
-      <h3>Route Preview</h3>
-      <div id="preview" class="preview empty">No route yet</div>
+      <section id="segmentPanel" class="segment-panel hidden">
+        <h3>Great-circle Segments (Aviation)</h3>
+        <p id="segmentTotals" class="small">-</p>
+        <ol id="segmentList" class="segment-list"></ol>
+      </section>
+
+      <h3>Simple Map</h3>
+      <div id="simpleMap" class="simple-map" aria-label="Simple map"></div>
+      <p id="mapMeta" class="small">Map shows start/end and route geometry.</p>
 
       <h3>Request URL</h3>
       <pre id="requestUrl" class="block">-</pre>
@@ -139,6 +147,7 @@
     </section>
   </main>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>
