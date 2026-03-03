@@ -1,0 +1,276 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f8f6;
+  --panel: #ffffff;
+  --ink: #1a2928;
+  --subtle: #5c7573;
+  --line: #cce0dc;
+  --accent: #0c8f82;
+  --accent-2: #e8f6f4;
+  --error: #b23838;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 0%, #d9f1ed 0, transparent 40%),
+    radial-gradient(circle at 95% 10%, #f7eac9 0, transparent 36%),
+    var(--bg);
+}
+
+.app {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 16px 24px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 18px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(26, 41, 40, 0.08);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 6px;
+}
+
+.hint,
+.note {
+  color: var(--subtle);
+  line-height: 1.45;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+fieldset {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin: 0;
+  padding: 10px 12px 12px;
+}
+
+legend {
+  padding: 0 6px;
+  color: var(--subtle);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.row {
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fafefe;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input[type="url"],
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 10px;
+  outline: none;
+  background: #fff;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px #d6f3ee;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+#runBtn {
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+
+.subtle {
+  background: var(--accent-2);
+  color: #0b5a52;
+}
+
+.status {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 600;
+}
+
+.status.idle {
+  background: #f4f7f7;
+  color: #475a59;
+}
+
+.status.busy {
+  background: #fff5e6;
+  color: #81561e;
+  border-color: #f2ddb5;
+}
+
+.status.ok {
+  background: #ebfaf4;
+  color: #13623f;
+  border-color: #bde9d4;
+}
+
+.status.error {
+  background: #fff0f0;
+  color: var(--error);
+  border-color: #f3c4c4;
+}
+
+.small {
+  margin: -2px 0 12px;
+  color: #47605e;
+  font-size: 13px;
+  white-space: pre-line;
+}
+
+.warning {
+  color: #8a5312;
+  background: #fff5e8;
+  border: 1px solid #efd9ba;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.summary {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 14px;
+}
+
+.summary article {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  background: #fbfefe;
+}
+
+.summary h3 {
+  font-size: 13px;
+  color: var(--subtle);
+  margin-bottom: 8px;
+}
+
+.summary p {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.preview {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #fbffff 0%, #f2fbf9 100%);
+  margin-bottom: 12px;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.preview svg {
+  width: 100%;
+  height: 220px;
+  display: block;
+}
+
+.preview.empty {
+  color: var(--subtle);
+}
+
+.block {
+  margin: 0 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  background: #f8fcfb;
+  max-height: 240px;
+  overflow: auto;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+@media (max-width: 960px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid.two,
+  .grid.three,
+  .summary {
+    grid-template-columns: 1fr;
+  }
+}

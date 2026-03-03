@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OSRM Cloud API UI</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app">
+    <section class="panel">
+      <h1>OSRM Cloud API UI</h1>
+      <p class="hint">Enter coordinates and call OSRM Route API to compute driving distance and duration.</p>
+
+      <div class="grid two">
+        <label>
+          API Base URL
+          <input id="apiBase" type="url" value="https://router.project-osrm.org" spellcheck="false">
+        </label>
+        <label>
+          Profile
+          <select id="profile">
+            <option value="driving" selected>driving</option>
+            <option value="driving-traffic">driving-traffic</option>
+            <option value="walking">walking</option>
+            <option value="cycling">cycling</option>
+            <option value="aviation-gc">aviation (great-circle)</option>
+            <option value="shipping-gc">shipping (great-circle)</option>
+          </select>
+        </label>
+      </div>
+      <p id="profileHint" class="small warning hidden"></p>
+
+      <div class="grid two">
+        <label>
+          Geocode Base URL
+          <input id="geocodeBase" type="url" value="https://nominatim.openstreetmap.org" spellcheck="false">
+        </label>
+        <label class="row">
+          <input id="useAddress" type="checkbox">
+          Use address input
+        </label>
+      </div>
+
+      <div class="grid two">
+        <fieldset>
+          <legend>From Address</legend>
+          <label>Address
+            <input id="fromAddress" type="text" value="Taipei 101, Taipei" placeholder="Street, city, country">
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>To Address</legend>
+          <label>Address
+            <input id="toAddress" type="text" value="Taipei Main Station, Taipei" placeholder="Street, city, country">
+          </label>
+        </fieldset>
+      </div>
+
+      <p id="geocodeResult" class="small">Address mode is optional. Coordinates are used by default.</p>
+
+      <div class="grid two">
+        <fieldset>
+          <legend>From</legend>
+          <div class="grid two">
+            <label>Latitude
+              <input id="fromLat" type="number" step="any" value="25.0330">
+            </label>
+            <label>Longitude
+              <input id="fromLon" type="number" step="any" value="121.5654">
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>To</legend>
+          <div class="grid two">
+            <label>Latitude
+              <input id="toLat" type="number" step="any" value="25.0478">
+            </label>
+            <label>Longitude
+              <input id="toLon" type="number" step="any" value="121.5319">
+            </label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="grid three">
+        <label class="row">
+          <input id="steps" type="checkbox">
+          Include Steps
+        </label>
+        <label class="row">
+          <input id="alternatives" type="checkbox">
+          Alternatives
+        </label>
+        <label class="row">
+          <input id="annotations" type="checkbox">
+          Annotations
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="runBtn" type="button">Calculate Route</button>
+        <button id="geocodeBtn" type="button" class="subtle">Resolve Addresses</button>
+        <button id="swapBtn" type="button" class="subtle">Swap From/To</button>
+      </div>
+
+      <p id="status" class="status idle">Idle</p>
+      <p class="note">Note: public OSRM and Nominatim endpoints usually have no SLA and may enforce rate limits.</p>
+    </section>
+
+    <section class="panel result">
+      <h2>Result</h2>
+      <div class="summary">
+        <article>
+          <h3>Distance</h3>
+          <p id="distance">-</p>
+        </article>
+        <article>
+          <h3>Duration</h3>
+          <p id="duration">-</p>
+        </article>
+        <article>
+          <h3>Route Code</h3>
+          <p id="routeCode">-</p>
+        </article>
+      </div>
+
+      <h3>Route Preview</h3>
+      <div id="preview" class="preview empty">No route yet</div>
+
+      <h3>Request URL</h3>
+      <pre id="requestUrl" class="block">-</pre>
+
+      <h3>Raw JSON</h3>
+      <pre id="rawJson" class="block">-</pre>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
